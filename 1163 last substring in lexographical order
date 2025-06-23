@@ -1,0 +1,32 @@
+Given a string s, return the last substring of s in lexicographical order.
+
+Example 1:
+
+Input: s = "abab"
+Output: "bab"
+Explanation: The substrings are ["a", "ab", "aba", "abab", "b", "ba", "bab"]. The lexicographically maximum substring is "bab".
+
+Example 2:
+
+Input: s = "leetcode"
+Output: "tcode"
+
+class Solution {
+    public String lastSubstring(String s) {
+        int n = s.length();
+        int i = 0, j = 1, k = 0;
+        while (j + k < n) {
+            if (s.charAt(i + k) == s.charAt(j + k)) {
+                k++;
+            } else if (s.charAt(i + k) > s.charAt(j + k)) {
+                j = j + k + 1;
+                k = 0;
+            } else {
+                i = Math.max(i + k + 1, j);
+                j = i + 1;
+                k = 0;
+            }
+        }
+        return s.substring(i);
+    }
+}

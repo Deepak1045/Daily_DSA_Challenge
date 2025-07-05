@@ -1,0 +1,24 @@
+class Solution {
+    public double myPow(double a, int n) {
+        if(n == 0) return 1.0;
+        if(a == 0) return 0.0;
+        if(a == 1) return 1.0;
+        if(a == -1 && n % 2 == 0) return 1.0;
+        if(a == -1 && n % 2 != 0) return -1.0;
+        long N = n; // use long to handle overflow when n == Integer.MIN_VALUE
+        if (N < 0) {
+            a = 1 / a;
+            N = -N;
+        }
+
+       double ans = 1;
+       while(N > 0){
+        if((N&1) != 0){
+            ans = ans * a;
+        }
+        a = a*a;
+        N = N>>1;
+       }
+       return ans;
+    }
+}

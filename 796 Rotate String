@@ -1,0 +1,14 @@
+public class Solution {
+    public boolean rotateString(String s, String goal) {
+        // Lengths must match, else impossible
+        if (s.length() != goal.length()) {
+            return false;
+        }
+
+        // s + s will contain all possible rotations of s
+        String combined = s + s;
+
+        // Check if goal is one of those rotations
+        return combined.contains(goal);
+    }
+}

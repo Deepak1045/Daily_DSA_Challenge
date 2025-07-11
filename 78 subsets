@@ -1,0 +1,22 @@
+class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        
+        // Start with the empty subset
+        result.add(new ArrayList<>());
+        
+        // Iterate over every number in nums
+        for (int num : nums) {
+            int n = result.size();
+            
+            // For each existing subset, create a new subset with the current num
+            for (int i = 0; i < n; i++) {
+                List<Integer> newSubset = new ArrayList<>(result.get(i));
+                newSubset.add(num);
+                result.add(newSubset);
+            }
+        }
+        
+        return result;
+    }
+}

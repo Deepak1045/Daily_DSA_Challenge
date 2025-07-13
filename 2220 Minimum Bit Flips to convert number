@@ -1,0 +1,13 @@
+public class Solution {
+    public int minBitFlips(int start, int goal) {
+        int xor = start ^ goal;  // XOR will give 1 at differing bit positions
+        int count = 0;
+
+        while (xor != 0) {
+            count += xor & 1;    // check if last bit is 1
+            xor >>= 1;           // right shift to check next bit
+        }
+
+        return count;
+    }
+}

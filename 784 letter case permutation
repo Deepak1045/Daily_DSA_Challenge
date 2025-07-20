@@ -1,0 +1,27 @@
+class Solution {
+    public List<String> letterCasePermutation(String s) {
+        List<String> result = new ArrayList<>();
+        result.add("");
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            int size = result.size();
+
+            if (Character.isLetter(c)) {
+
+                for (int j = 0; j < size; j++) {
+                    String current = result.get(j);
+                    result.set(j, current + Character.toLowerCase(c));
+                    result.add(current + Character.toUpperCase(c));
+                }
+            } else {
+
+                for (int j = 0; j < size; j++) {
+                    result.set(j, result.get(j) + c);
+                }
+            }
+        }
+
+        return result;
+    }
+}
